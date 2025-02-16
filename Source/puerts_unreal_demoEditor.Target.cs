@@ -9,8 +9,8 @@ public class puerts_unreal_demoEditorTarget : TargetRules
 	{
 		Type = TargetType.Editor;
 #if UE_5_4_OR_LATER
-		DefaultBuildSettings = BuildSettingsVersion.V5;
-		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_4;
+		DefaultBuildSettings = BuildSettingsVersion.Latest;
+		IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
 #endif
 		ExtraModuleNames.Add("puerts_unreal_demo");
 	}

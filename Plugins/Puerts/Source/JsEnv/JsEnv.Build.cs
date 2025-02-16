@@ -23,7 +23,7 @@ public class JsEnv : ModuleRules
 
     private SupportedV8Versions UseV8Version = 
 #if UE_4_25_OR_LATER
-        SupportedV8Versions.V9_4_146_24;
+        SupportedV8Versions.V11_8_172;
 #else
         SupportedV8Versions.VDeprecated;
 #endif
@@ -437,7 +437,8 @@ public class JsEnv : ModuleRules
         string LibraryPath = Path.GetFullPath(Path.Combine(ModuleDirectory, "..", "..", "ThirdParty", "v8" + v8LibSuffix, "Lib"));
         if (Target.Platform == UnrealTargetPlatform.Win64)
         {
-            if (!Target.bBuildEditor || ForceStaticLibInEditor)
+            //if (!Target.bBuildEditor || ForceStaticLibInEditor)
+            if (ForceStaticLibInEditor)
             {
                 string V8LibraryPath = Path.Combine(LibraryPath, "Win64MD");
                 PublicAdditionalLibraries.Add(Path.Combine(V8LibraryPath, "wee8.lib"));
@@ -458,7 +459,8 @@ public class JsEnv : ModuleRules
         {
             //PublicFrameworks.AddRange(new string[] { "WebKit",  "JavaScriptCore" });
             //PublicFrameworks.AddRange(new string[] { "WebKit" });
-            if (!Target.bBuildEditor || ForceStaticLibInEditor)
+            //if (!Target.bBuildEditor || ForceStaticLibInEditor)
+            if (ForceStaticLibInEditor)
             {
                 LibraryPath = Path.Combine(LibraryPath, "macOS");
 #if UE_5_2_OR_LATER
